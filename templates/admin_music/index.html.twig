@@ -1,0 +1,59 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Music index{% endblock %}
+
+{% block body %}
+    <h1>Music index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title_music</th>
+                <th>CreatedAt_music</th>
+                <th>Length</th>
+                <th>Description_music</th>
+                <th>Details</th>
+                <th>Producers</th>
+                <th>Writers_composers</th>
+                <th>Studios</th>
+                <th>Likes</th>
+                <th>ImageName_music</th>
+                <th>UpdatedAt_music</th>
+                <th>AudioName_music</th>
+                <th>Slug_music</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for music in music %}
+            <tr>
+                <td>{{ music.id }}</td>
+                <td>{{ music.titleMusic }}</td>
+                <td>{{ music.createdAtMusic ? music.createdAtMusic|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ music.length ? music.length|date('H:i:s') : '' }}</td>
+                <td>{{ music.descriptionMusic }}</td>
+                <td>{{ music.details }}</td>
+                <td>{{ music.producers }}</td>
+                <td>{{ music.writersComposers }}</td>
+                <td>{{ music.studios }}</td>
+                <td>{{ music.likes }}</td>
+                <td>{{ music.imageNameMusic }}</td>
+                <td>{{ music.updatedAtMusic ? music.updatedAtMusic|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ music.audioNameMusic }}</td>
+                <td>{{ music.slugMusic }}</td>
+                <td>
+                    <a href="{{ path('app_admin_music_show', {'id': music.id}) }}">show</a>
+                    <a href="{{ path('app_admin_music_edit', {'id': music.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_music_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Playlist{% endblock %}
+
+{% block body %}
+    <h1>Playlist</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ playlist.id }}</td>
+            </tr>
+            <tr>
+                <th>Title_playlist</th>
+                <td>{{ playlist.titlePlaylist }}</td>
+            </tr>
+            <tr>
+                <th>Description_playlist</th>
+                <td>{{ playlist.descriptionPlaylist }}</td>
+            </tr>
+            <tr>
+                <th>ImageName_playlist</th>
+                <td>{{ playlist.imageNamePlaylist }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt_playlist</th>
+                <td>{{ playlist.createdAtPlaylist ? playlist.createdAtPlaylist|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Slug_playlist</th>
+                <td>{{ playlist.slugPlaylist }}</td>
+            </tr>
+            <tr>
+                <th>UpdateAt_playlist</th>
+                <td>{{ playlist.updateAtPlaylist ? playlist.updateAtPlaylist|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_playlist_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_playlist_edit', {'id': playlist.id}) }}">edit</a>
+
+    {{ include('admin_playlist/_delete_form.html.twig') }}
+{% endblock %}
